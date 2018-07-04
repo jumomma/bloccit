@@ -1,7 +1,27 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'random_data'
+
+ # Create Posts
+ 50.times do
+ # #1 using "!" instructs the method to raise an error if there's a problem with the data we're seeding
+   Post.create!(
+ # #2 RandomData will create random strings for title and body.
+     title:  RandomData.random_sentence,
+     body:   RandomData.random_paragraph
+   )
+ end
+ posts = Post.all
+
+ # Create Comments
+ # #3 call 'times' on an integer; runs a given block specified number of times.
+ 100.times do
+   Comment.create!(
+ # #4 call 'sample' on the array returned by Post.all in order to pick a random post.
+ #   'sample' returns a random element from the array every time its called
+     post: posts.sample,
+     body: RandomData.random_paragraph
+   )
+ end
+
+ puts "Seed finished"
+ puts "#{Post.count} posts created"
+ puts "#{Comment.count} comments created"
