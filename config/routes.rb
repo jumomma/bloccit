@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :advertisements
+
   # #1
   resources :posts
 
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'faq' => 'welcome#faq'
 
-  root 'welcome#index'
+  root to: 'welcome#index'
 
 
 end
