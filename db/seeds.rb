@@ -30,6 +30,11 @@ puts "#{Comment.count}"
   Comment.find_or_create_by!(post: Post.all.find_by(title: "A unique title"), body: "A unique body")
 puts "#{Comment.count}"
 
+puts "#{Advertisement.count}"
+  Advertisement.find_or_create_by!(title: "A Unique Title", copy: "A unique Copy", price: 99)
+puts "#{Advertisement.count}"
+
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
+ puts "#{Advertisement.count} advertisements created"
